@@ -1,0 +1,31 @@
+# После каждого изменения скилла в main пересобирает zip и обновляет файл в последнем релизе,
+# чтобы ссылка «Скачать скилл» всегда отдавала свежую версию.
+name: build-zip
+
+on:
+  push:
+    branches: [main]
+    paths: ["pereezd-iz-chatgpt/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Проверить имя скилла
+        run: |
+          name=$(sed -n 's/^name: *//p' pereezd-iz-chatgpt/SKILL.md | head -1)
+          echo "name=$name"
+          case "$name" in *claude*|*anthropic*) echo "Имя скилла не может содержать claude/anthropic"; exit 1;; esac
+      - name: Собрать zip
+        run: zip -rq -X pereezd-v-claude.zip pereezd-iz-chatgpt -x '*.DS_Store'
+      - name: Обновить файл в последнем релизе
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=$(gh release view --json tagName -q .tagName)
+          gh release upload "$tag" pereezd-v-claude.zip --clobber
