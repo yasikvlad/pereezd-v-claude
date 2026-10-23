@@ -4,7 +4,7 @@
 set -euo pipefail
 
 REPO="yasikvlad/pereezd-v-claude"
-DEST="$HOME/.claude/skills/pereezd-v-claude"
+DEST="$HOME/.claude/skills/pereezd-iz-chatgpt"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
@@ -13,7 +13,7 @@ curl -fsSL "https://github.com/$REPO/archive/refs/heads/main.tar.gz" | tar -xz -
 
 mkdir -p "$HOME/.claude/skills"
 rm -rf "$DEST"
-cp -R "$TMP/pereezd-v-claude-main/pereezd-v-claude" "$DEST"
+cp -R "$TMP/pereezd-v-claude-main/pereezd-iz-chatgpt" "$DEST"
 chmod +x "$DEST/scripts/"*.sh
 
 echo

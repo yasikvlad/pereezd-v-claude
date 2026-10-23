@@ -3,7 +3,7 @@
 $ErrorActionPreference = "Stop"
 
 $repo = "yasikvlad/pereezd-v-claude"
-$dest = Join-Path $HOME ".claude\skills\pereezd-v-claude"
+$dest = Join-Path $HOME ".claude\skills\pereezd-iz-chatgpt"
 $tmp = Join-Path $env:TEMP ("pereezd-" + [guid]::NewGuid())
 New-Item -ItemType Directory -Path $tmp | Out-Null
 
@@ -14,7 +14,7 @@ Expand-Archive $zip -DestinationPath $tmp
 
 New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
 if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
-Copy-Item (Join-Path $tmp "pereezd-v-claude-main\pereezd-v-claude") $dest -Recurse
+Copy-Item (Join-Path $tmp "pereezd-v-claude-main\pereezd-iz-chatgpt") $dest -Recurse
 Remove-Item $tmp -Recurse -Force
 
 Write-Host ""

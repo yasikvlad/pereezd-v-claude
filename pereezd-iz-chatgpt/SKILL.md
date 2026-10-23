@@ -1,5 +1,5 @@
 ---
-name: pereezd-v-claude
+name: pereezd-iz-chatgpt
 description: >
   Переезд из ChatGPT в Claude под ключ. Сам проверяет, что стоит на компьютере (Chrome,
   расширение Claude in Chrome, вход в ChatGPT и claude.ai), доустанавливает недостающее,

@@ -14,7 +14,7 @@
 
 ### Вариант 1. Приложение Claude (проще всего)
 1. Скачай [`pereezd-v-claude.zip`](https://github.com/yasikvlad/pereezd-v-claude/releases/latest/download/pereezd-v-claude.zip).
-2. В Claude: **Customize → Skills → «+» → Upload a skill** → выбери скачанный zip.
+2. В Claude: **Customize → Skills → «+ Add» → Upload skill** → выбери скачанный zip.
 3. Новый чат → напиши: **«Перенеси мою память из ChatGPT»**.
 
 ### Вариант 2. Claude Code
